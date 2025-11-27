@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GreenEye</string>
+    <string name="detected_output">Detected Objects</string>
 </resources>

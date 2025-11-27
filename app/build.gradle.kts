@@ -31,6 +31,7 @@ android {
         viewBinding = true
         dataBinding = true
         buildConfig = true
+        mlModelBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.14"
@@ -42,6 +43,9 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    androidResources {
+        noCompress += "tflite"
+    }
 }
 
 dependencies {
@@ -51,6 +55,8 @@ dependencies {
     implementation(libs.material.v1130)
     implementation(libs.androidx.swiperefreshlayout)
     implementation(libs.core.ktx)
+    implementation(libs.tensorflow.lite.support)
+    implementation(libs.tensorflow.lite.metadata)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit.v115)
     androidTestImplementation(libs.androidx.espresso.core.v351)
@@ -78,5 +84,8 @@ dependencies {
     testImplementation(libs.retrofit.mock)
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.material3)
-
+    implementation(libs.tensorflow.lite)
+    //implementation(libs.tensorflow.lite.gpu)
+    implementation(libs.tensorflow.lite.metadata)
+    implementation(libs.tensorflow.lite.support)
 }

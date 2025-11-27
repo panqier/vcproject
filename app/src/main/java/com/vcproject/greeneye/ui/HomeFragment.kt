@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.vcproject.greeneye.composable.HomeContent
@@ -12,6 +15,13 @@ import com.vcproject.greeneye.databinding.HomeFragmentBinding
 class HomeFragment: Fragment() {
     private lateinit var binding: HomeFragmentBinding
     private lateinit var homeViewModel: HomeViewModel
+
+    private val takePictureLauncher = registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bitmap ->
+        if (bitmap != null) {
+
+            homeViewModel.processImage(bitmap)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,9 +40,14 @@ class HomeFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.composeView.setContent {
+            val resultBitmap by homeViewModel.uiState.collectAsState()
+            val results by homeViewModel.detectionResults.collectAsState()
             HomeContent(
+                displayBitmap = resultBitmap,
+                detectionResults = results,
                 onTakePhotoClick = {
-                    homeViewModel.takePhoto()
+                    homeViewModel.clearResults()
+                    takePictureLauncher.launch(null)
                 }
             )
         }
