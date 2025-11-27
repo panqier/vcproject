@@ -22,9 +22,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application){
     private val _uiState = MutableStateFlow<Bitmap?>(null)
     val uiState: StateFlow<Bitmap?> = _uiState.asStateFlow()
 
-    private val _detectionResults = MutableStateFlow<List<DetectionResult>>(emptyList())
-    val detectionResults = _detectionResults.asStateFlow()
-
     init {
         detector.init()
     }
@@ -34,8 +31,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application){
             //start to detect
             val resizedForModel = Bitmap.createScaledBitmap(bitmap, 640, 640, true)
             val results = detector.detect(resizedForModel)
-
-            _detectionResults.value = results
 
             val scaleX = bitmap.width / 640f
             val scaleY = bitmap.height / 640f
@@ -103,11 +98,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application){
             canvas.drawText(label, res.left, textY, textPaint)
         }
         return mutableBitmap
-    }
-
-    fun clearResults() {
-        _detectionResults.value = emptyList()
-        _uiState.value = null
     }
 
     override fun onCleared() {

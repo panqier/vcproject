@@ -41,12 +41,9 @@ class HomeFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.composeView.setContent {
             val resultBitmap by homeViewModel.uiState.collectAsState()
-            val results by homeViewModel.detectionResults.collectAsState()
             HomeContent(
                 displayBitmap = resultBitmap,
-                detectionResults = results,
                 onTakePhotoClick = {
-                    homeViewModel.clearResults()
                     takePictureLauncher.launch(null)
                 }
             )
