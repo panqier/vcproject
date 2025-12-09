@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.core.ktx)
     implementation(libs.tensorflow.lite.support)
     implementation(libs.tensorflow.lite.metadata)
+    implementation(libs.androidx.storage)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit.v115)
     androidTestImplementation(libs.androidx.espresso.core.v351)
@@ -88,4 +89,9 @@ dependencies {
     //implementation(libs.tensorflow.lite.gpu)
     implementation(libs.tensorflow.lite.metadata)
     implementation(libs.tensorflow.lite.support)
+    implementation(libs.androidx.camera.core)
+    implementation(libs.androidx.camera.camera2)
+    implementation(libs.androidx.camera.lifecycle)
+    implementation(libs.androidx.camera.view)
+    implementation(libs.androidx.material.icons.extended) // 版本号跟随你的 compose 版本
 }

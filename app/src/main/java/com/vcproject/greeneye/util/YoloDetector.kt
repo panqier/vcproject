@@ -14,14 +14,44 @@ import kotlin.math.min
 
 class YoloDetector(private val context: Context) {
 
-    private val MODEL_PATH = "bestloss_float32.tflite"
+    private val MODEL_PATH = "best_14_float32.tflite"
     private val INPUT_SIZE = 640
     private val LABELS = listOf(
-        "BIODEGRADABLE", "CARDBOARD", "GLASS", "METAL", "PAPER", "PLASTIC"
+        "METAL",
+        "GLASS",
+        "PET_CONTAINER",
+        "HDPE_CONTAINER",
+        "PLASTIC_WRAPPER",
+        "PLASTIC_BAG",
+        "TETRAPAK",
+        "PAPER",
+        "CARDBOARD",
+        "PAPER_CUP",
+        "PAPER_BAG",
+        "USED_TISSUE",
+        "STYROFOAM",
+        "PLASTIC_CUP"
     )
+
+    private fun getBCCategory(label: String): String {
+        return when (label) {
+            // Mixed Paper
+            "PAPER", "CARDBOARD", "PAPER_BAG" -> "Mixed Paper"
+
+            // Recycle
+            "METAL", "GLASS", "PET_CONTAINER", "HDPE_CONTAINER", "TETRAPAK",
+            "PAPER_CUP", "PLASTIC_CUP",
+            "PLASTIC_WRAPPER", "PLASTIC_BAG", "STYROFOAM" -> "Recycle"
+
+            // Garbage
+            "USED_TISSUE" -> "Garbage"
+
+            else -> "Unknown"
+        }
+    }
     private val OUTPUT_CHANNELS = 4 + LABELS.size
     private val OUTPUT_ANCHORS = 8400
-    private val CONFIDENCE_THRESHOLD = 0.45f
+    private val CONFIDENCE_THRESHOLD = 0.50f
     private val IOU_THRESHOLD = 0.5f
 
     private var interpreter: Interpreter? = null
@@ -105,9 +135,11 @@ class YoloDetector(private val context: Context) {
                 val top = (y - h / 2) * INPUT_SIZE
                 val right = (x + w / 2) * INPUT_SIZE
                 val bottom = (y + h / 2) * INPUT_SIZE
+                val specificName = LABELS.getOrElse(classIndex) { "Unknown" }
                 detections.add(DetectionResult(
                     classIndex,
-                    className = LABELS.getOrElse(classIndex) { "Unknown" },
+                    specificName = specificName,
+                    category = getBCCategory(specificName),
                     maxScore,
                     left, top, right, bottom)
                 )

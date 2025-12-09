@@ -7,6 +7,7 @@ androidxJunitVersion = "1.3.0"
 androidxMaterial = "1.9.2"
 animation = "1.9.2"
 appcompatVersion = "1.6.1"
+cameraCore = "1.5.1"
 coilCompose = "2.6.0"
 coreKtxVersion = "1.12.0"
 coreTesting = "2.2.0"
@@ -21,6 +22,7 @@ appcompat = "1.7.0"
 kotlinxCoroutinesTest = "1.7.3"
 material = "1.12.0"
 material3 = "1.4.0"
+materialIconsExtended = "1.7.8"
 materialVersion = "1.13.0"
 mockitoCore = "4.5.1"
 mockitoKotlin = "4.0.0"
@@ -35,10 +37,15 @@ tensorflowLiteGpu = "2.14.0"
 ui = "1.9.2"
 tensorflowLiteSupport = "0.4.4"
 tensorflowLiteMetadata = "0.4.4"
+storage = "1.6.0"
 
 [libraries]
 androidx-animation = { module = "androidx.compose.animation:animation", version.ref = "animation" }
 androidx-appcompat-v161 = { module = "androidx.appcompat:appcompat", version.ref = "appcompatVersion" }
+androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "cameraCore" }
+androidx-camera-core = { module = "androidx.camera:camera-core", version.ref = "cameraCore" }
+androidx-camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "cameraCore" }
+androidx-camera-view = { module = "androidx.camera:camera-view", version.ref = "cameraCore" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-core-ktx-v1120 = { module = "androidx.core:core-ktx", version.ref = "coreKtxVersion" }
 androidx-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "coreTesting" }
@@ -48,6 +55,7 @@ androidx-foundation = { module = "androidx.compose.foundation:foundation", versi
 androidx-junit-v115 = { module = "androidx.test.ext:junit", version.ref = "androidxJunit" }
 androidx-junit-v130 = { module = "androidx.test.ext:junit", version.ref = "androidxJunitVersion" }
 androidx-material = { module = "androidx.compose.material:material", version.ref = "androidxMaterial" }
+androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 androidx-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayout" }
@@ -77,6 +85,7 @@ tensorflow-lite = { group = "org.tensorflow", name = "tensorflow-lite", version.
 tensorflow-lite-gpu = { group = "org.tensorflow", name = "tensorflow-lite-gpu", version.ref = "tensorflowLiteGpu" }
 tensorflow-lite-support = { group = "org.tensorflow", name = "tensorflow-lite-support", version.ref = "tensorflowLiteSupport" }
 tensorflow-lite-metadata = { group = "org.tensorflow", name = "tensorflow-lite-metadata", version.ref = "tensorflowLiteMetadata" }
+androidx-storage = { group = "androidx.test.services", name = "storage", version.ref = "storage" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

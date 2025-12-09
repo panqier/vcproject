@@ -15,10 +15,7 @@
       </SelectionState>
       <SelectionState runConfigName="MainActivity">
         <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="MainActivity (1)">
-        <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-11-27T03:21:31.540434Z">
+        <DropdownSelection timestamp="2025-11-30T21:48:00.857466Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="LocalEmulator" identifier="path=/Users/qierpan/.android/avd/7.6_Fold-in_with_outer_display_API_31.avd" />
