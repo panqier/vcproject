@@ -13,3 +13,4 @@
 .externalNativeBuild
 .cxx
 local.properties
+app/src/main/assets/best_14_float32.tflite
